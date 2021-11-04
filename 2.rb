@@ -16,3 +16,29 @@
 #
 ## Решение:
 
+require 'digest'
+
+class Find_key
+
+  attr_accessor :key, :number
+
+  def initialize(key, number)
+    @key = key
+    @number = number
+  end
+
+  def addition_number
+    @number = @number.to_i + 1
+  end
+
+  def start_5_zeroes
+    md5_hash = Digest::MD5.new
+    md5_hash.update(@key + @number.to_s)
+    md5_hash.hexdigest.start_with?("00000")
+  end
+end
+
+  input = gets
+  find_key = Find_key.new(input.chomp, "0")
+  find_key.addition_number until find_key.start_5_zeroes
+  puts find_key.number

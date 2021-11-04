@@ -9,5 +9,14 @@
 # - Результат должен быть выведен в консоль командой puts
 #
 ## Решение:
+arr = []
+File.readlines("data/3.txt").each do |line|
+  line_num = line.split.map do |num|
+    num.to_i
+  end
+  difference = line_num.max - line_num.min
+  arr << difference
+end
 
+puts result = arr.sum
 

@@ -16,6 +16,21 @@
 #
 ## Решение:
 
+def bomb(information)
+  inf = information.to_a.join
+  i = 0
+  result = 0
 
+  while inf.size != i
+    if inf[i] == "("
+      result += 1
+    else
+      result -= 1
+    end
+    i += 1
+  end
 
+  puts result
+end
 
+bomb(File.open("data/1.txt", "r"))

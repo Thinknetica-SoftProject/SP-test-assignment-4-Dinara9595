@@ -15,5 +15,24 @@
 #
 #
 ## Решение:
+total_square = []
+
+array_square_num = File.readlines("data/4.txt").map do |square|
+  square.gsub(/[x]/, " " ).split.map do |gift|
+    gift.to_i
+  end
+end
+
+  array_square_num.each do |arr|
+    sq1 = arr[0] * arr[1]
+    sq2 = arr[0] * arr[2]
+    sq3 = arr[1] * arr[2]
+    arr_square = []
+    arr_square << sq1 << sq2 << sq3
+    square_gift = 2*sq1 + 2*sq2 + 2*sq3 + arr_square.min
+    total_square << square_gift
+  end
+
+puts total_square.sum
 
 
